@@ -1,0 +1,26 @@
+{% extends 'layout.html'%}
+
+{% block title %}
+SmartTrade
+{% endblock %}
+
+{% block content %}
+
+  <head>
+  </head>
+  <body>
+    <h1 id="padding">Dashboard</h1>
+
+    <p>
+    This will have a search bar that you can enter a stock symbol.
+    This page will return the current stock prices.
+    </p>
+
+    <div>
+    <form action="/dashboard" method="post">
+      <input type="text" name="sym"></input>
+      <input type="submit" value="Enter"</input>
+    </div>
+
+  </body>
+{% endblock %}

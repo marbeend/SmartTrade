@@ -1,0 +1,18 @@
+{% block title %}
+SmartTrade
+{% endblock %}
+
+{% block content %}
+
+<head>
+</head>
+<body>
+  <header id = "navbar">
+    <li class="left-nav"><a href="{{ url_for('home') }}">SmartTrade</a></li>
+    <li class="left-nav"><a href="{{ url_for('home') }}">Home</a></li>
+    <li class="left-nav"><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+    <li class="right-nav"><a href="{{ url_for('login') }}">Login</a></li>
+    <li class="right-nav"><a href="{{ url_for('signup') }}">Signup</a></li>
+  </header>
+</body>
+{% endblock %}
