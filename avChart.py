@@ -13,7 +13,7 @@ def retrieveStockSymbol(sym):
 
 def plotData(avSymbol):
 # Initalize access to AlphaVantage API
-    ts = TimeSeries(key='insert alpha vantage key', output_format='pandas')
+    ts = TimeSeries(key='MXGFKJL5OC8YKCT5', output_format='pandas')
 # Get Intraday data of stock symbol, with 1 minute interval, and set it to data
     data, metadata = ts.get_intraday(symbol=f"{avSymbol}",interval='1min', outputsize='full')
 # with matplotlib, plot the data

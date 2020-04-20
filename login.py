@@ -1,11 +1,7 @@
-from flask import Flask, render_template, url_for, redirect, request
-from avChart import plotData, retrieveStockSymbol
 from flask import Flask , redirect , render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager , UserMixin , login_required ,login_user, logout_user,current_user
-
-app = Flask(__name__)
-app.static_folder = 'static'
+app=Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///db.db'
 app.config['SECRET_KEY']='b',h0\xa2\xa6\xa0\xd2\x1c8W\xb7\xe3\xd0\xdf\x9e\x8e\x90\xac9\x90\xc7\x81%\x8b''
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=True
@@ -20,32 +16,12 @@ class User(UserMixin,db.Model):
     email = db.Column(db.String(200))
     password = db.Column(db.String(200))
     experience = db.Column(db.string(200))
+
+
 @login_manager.user_loader
 def get(id):
     return User.query.get(id)
-@app.route("/")
-def home():
-    return render_template("home.html")
 
-@app.route("/dashboard", methods = ['GET'])
-def dashboard():
-    return render_template('dashboard.html')
-
-@app.route("/dashboard", methods = ['POST'])
-def dashboardPost():
-    #Retrieve symbol from html form
-    symbol = request.form["sym"]
-
-    #Set symbol from form into variable
-    enteredSymbol = retrieveStockSymbol(symbol)
-
-    #PLot data from Alpha Vantage
-    plotData(enteredSymbol)
-    return render_template('dashboard.html', sym=symbol)
-
-@app.route("/chart", methods = ['GET'])
-def chart():
-    return render_template('chart.html')
 @app.route('/',methods=['GET'])
 @login_required
 def get_home():
@@ -87,5 +63,7 @@ def logout():
 
 
 
-if __name__ == "__main__":
+
+
+if __name__=='__main__':
     app.run(debug=True)
