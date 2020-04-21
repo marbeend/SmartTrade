@@ -42,8 +42,8 @@ def dashboardPost():
         enteredSymbol = retrieveStockSymbol(symbol)
     #PLot data from Alpha Vantage
         plotData(enteredSymbol)
-    return redirect(url_for('chart'))
-    return render_template('dashboard.html', sym=symbol)
+        return redirect(url_for('chart'))
+        return render_template('dashboard.html', sym=symbol)
 
 @app.route("/chart", methods = ['GET'])
 def chart():
