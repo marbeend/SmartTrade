@@ -3,11 +3,12 @@ from avChart import plotData, retrieveStockSymbol
 from flask import Flask , redirect , render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager , UserMixin , login_required ,login_user, logout_user,current_user
+import datetime
 
 app = Flask(__name__)
 app.static_folder = 'static'
-app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///db.db'
-app.config['SECRET_KEY']='b',h0\xa2\xa6\xa0\xd2\x1c8W\xb7\xe3\xd0\xdf\x9e\x8e\x90\xac9\x90\xc7\x81%\x8b''
+app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///db.sqlite3'
+#app.config['SECRET_KEY']='b',h0\xa2\xa6\xa0\xd2\x1c8W\xb7\xe3\xd0\xdf\x9e\x8e\x90\xac9\x90\xc7\x81%\x8b''
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=True
 db = SQLAlchemy(app)
 
@@ -16,10 +17,11 @@ login_manager.init_app(app)
 
 class User(UserMixin,db.Model):
     id = db.Column(db.Integer,primary_key=True,autoincrement=True)
-    username = db.Column(db.String(200))
+    username = db.Column(db.String(200),unique=True)
     email = db.Column(db.String(200))
     password = db.Column(db.String(200))
-    experience = db.Column(db.string(200))
+    experience = db.Column(db.Boolean())
+    date_created = db.Column(db.DateTime, default=datetime.datetime.now)
 @login_manager.user_loader
 def get(id):
     return User.query.get(id)
