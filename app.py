@@ -35,14 +35,14 @@ def dashboard():
 
 @app.route("/dashboard", methods = ['POST'])
 def dashboardPost():
+     if request.method == 'POST':
     #Retrieve symbol from html form
-    symbol = request.form["sym"]
-
+        symbol = request.form["sym"]
     #Set symbol from form into variable
-    enteredSymbol = retrieveStockSymbol(symbol)
-
+        enteredSymbol = retrieveStockSymbol(symbol)
     #PLot data from Alpha Vantage
-    plotData(enteredSymbol)
+        plotData(enteredSymbol)
+    return redirect(url_for('chart'))
     return render_template('dashboard.html', sym=symbol)
 
 @app.route("/chart", methods = ['GET'])
