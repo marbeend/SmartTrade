@@ -21,5 +21,13 @@ SmartTrade
       <input type="submit" value="Enter"</input>
     </div>
 
+    {% if graph != None %}
+    <div>
+      <img class ="graph" src={{graph}} alt="chart">
+    </div>
+    {% endif %}
+
+
+
   </body>
 {% endblock %}

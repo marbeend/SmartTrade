@@ -1,6 +1,6 @@
 
 #navbar {
-  position: fixed;
+  position: sticky;
   top: 0;
   width: 100%;
   list-style-type: none;
@@ -30,7 +30,7 @@ li a:hover {
   background-color: rgb(33, 98, 57);
 }
 
-img.center {
+img.graph {
   display: block;
   margin: 0 auto;
 }
@@ -76,6 +76,25 @@ img.center {
   text-align: center;
 }
 
-#padding {
-  padding-top: 30px
+.title {
+  padding-top: 60px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+.maindiv {
+  position: relative;
+  min-height: 89vh;
+  padding: 7px;
+  border-left: 7px solid green;
+  border-right: 7px solid green;
+  border-bottom: 7px solid darkgreen;
+  padding-bottom: 200px;
+  max-width: 960px;
+  background-color: #fff;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
 }

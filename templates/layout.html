@@ -8,11 +8,18 @@
     <title>{% block title %} {% endblock %}</title>
   </head>
   <body>
-{% include 'navbar.html' %}
-  {% block content %}
-  {% endblock %}
 
-{% include 'footer.html' %}
-      </div>
-    </body>
-  </html>
+    <header id = "navbar">
+      <li class="left-nav"><a href="/">SmartTrade</a></li>
+      <li class="left-nav"><a href="/">Home</a></li>
+      <li class="left-nav"><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+      <li class="left-nav"><a href="{{ url_for('PricePredictHome') }}">PricePredict</a></li>
+    </header>
+    
+    <div class="maindiv">
+    {% block content %}
+    {% endblock %}
+    </div>
+
+   </body>
+</html>
