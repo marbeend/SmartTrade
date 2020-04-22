@@ -97,7 +97,7 @@ img.graph {
   border-bottom: 7px solid #294480;
   /*padding-bottom: 200px;*/
   max-width: 960px;
-  background-color: #F5FFFA;
+  background-color: #fff;/* #F5FFFA;*/
   margin-left: auto;
   margin-right: auto;
   margin-bottom: auto;
