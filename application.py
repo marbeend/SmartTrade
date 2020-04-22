@@ -42,23 +42,25 @@ def PricePredict():
 		forecast_period = int(request.form["forecast_period"])
 	except:
 		forecast_period = 365
-
 	data_path = pricepredict.get_data(symbol)
 	data = pd.read_csv(data_path)
 
-	forecast_decision, path_to_graph = pricepredict.predict(data, forecast_period, symbol)
+	forecast_decision,graph_path,current_price,current_date,predicted_price,forecast_date = pricepredict.predict(data, forecast_period, symbol)
 
 	if forecast_decision:
 		decision = 'BUY!'
 	else:
 		decision = 'SELL!'
-
 	return render_template('pricepredict.html', 
-						   graph=path_to_graph,
+						   graph=graph_path,
 						   decision=decision,
 						   forecast_period = forecast_period,
-						   symbol=symbol,)
+						   symbol=symbol,
+						   current_price=round(current_price, 2),
+						   current_date=current_date,
+						   predicted_price=round(predicted_price, 2),
+						   forecast_date=forecast_date)
 
 
 if __name__ == "__main__":
-	app.run(debug=True)
+	app.run(debug=False)

@@ -9,23 +9,31 @@ SmartTrade
   <head>
   </head>
   <body>
-    <h1 style="color: lightblue;" class="title">PricePredict</h1>
+    <h1 class="title">PricePredict</h1>
+    <h5>Price prediction for your favorite stocks. Get buy/sell decisions based on forecast confidence, as visualized by the graphs.</h5>
 
     <p>
-    Enter a stock symbol and your desired forecast period.
+    Enter a stock symbol and your desired forecast period. If you wanted to hold your stock for 12 months, then you  want to forecast 365 days out and check the price.  
     </p>
 
     <div>
     <form action="/pricepredict" method="post">
       <input type="text" name="sym" placeholder = "Enter Stock Symbol" size=50></input>
       <br>
-      <input type="text" name="forecast_period" size=50 placeholder = "How many days ahead would you like to forecast?"></input>
+      <br>
+      <input type="text" name="forecast_period" size=50 placeholder = "How long ahead would you like to forecast? (days)"></input>
       <input type="submit"></input>
     </div>
+
+
+
+
 
     {% if graph != None %}
       <p>Stock Symbol: {{symbol}}</p>
       <p>Forecast Period: {{forecast_period}}</p>
+      <p>Current price on {{current_date}}: ${{current_price}}</p>
+      <p>Predicted price on {{forecast_date}}: ${{predicted_price}}</p>
       <img class ="graph" src={{graph}} alt="chart"/>
       <p>Price Predict says: {{decision}}</p>
 
