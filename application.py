@@ -17,10 +17,9 @@ def dashboard():
 
 @app.route("/dashboard", methods = ['POST'])
 def getStockData():
-	#Retrieve symbol from html form
+	#Retrieve symbol from form
 	symbol = request.form["sym"]
 
-	#PLot data from Alpha Vantage
 	#plotData(enteredSymbol)
 
 	graph_path = None

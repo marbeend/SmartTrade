@@ -5,8 +5,8 @@ from generate_dataset import get_data
 import os
 
 graph_count = 1
-def predict(data, forecast_period=365, filename = 'prediction'):
 
+def predict(data, forecast_period=365, filename = 'prediction'):
     '''
     parameters:
      'data' should be AlphaVantage stock dataset
@@ -14,7 +14,6 @@ def predict(data, forecast_period=365, filename = 'prediction'):
      'filename' is name of graph for UI
 
     '''
-
     #Get dates and values (time series) from 'data' dataframe for Prophet 
     ts = data.rename(columns={'1. open': 'open',
                 '2. high': 'high',
@@ -24,7 +23,7 @@ def predict(data, forecast_period=365, filename = 'prediction'):
                 'date': 'ds'})[['ds','y']]
 
     #Capture current information for UI
-    current_date = str(ts['ds'].values[0])[0:10]
+    current_date = str(ts['ds'].values[0])[0:10] #first 10 characters
     current_price = float(ts['y'].values[0])
     
     #Create Prophet model and fit it to given time series
@@ -36,7 +35,7 @@ def predict(data, forecast_period=365, filename = 'prediction'):
     forecast = m.predict(future)
 
     #Capture predicted information for UI
-    predicted_price = float(forecast['yhat'].values[-1])
+    predicted_price = float(forecast['yhat'].values[-1]) #Last element
     forecast_date = str(forecast['ds'].values[-1])[0:10]
 
     #bypass Flask caching by changing graph filename with each request
